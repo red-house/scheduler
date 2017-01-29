@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129041759) do
+ActiveRecord::Schema.define(version: 20170129232909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170129041759) do
     t.index ["band_id"], name: "index_jam_sessions_on_band_id", using: :btree
     t.index ["band_member_id", "duration"], name: "one_session_duration_per_band_member", using: :gist
     t.index ["band_member_id"], name: "index_jam_sessions_on_band_member_id", using: :btree
+    t.index ["candidate_id"], name: "index_jam_sessions_on_candidate_id", using: :btree
   end
 
 end

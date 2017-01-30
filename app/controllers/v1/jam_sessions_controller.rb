@@ -7,11 +7,11 @@ class V1::JamSessionsController < ApplicationController
 
   def create
     @jam_session = Services::Schedule.new.schedule_session(jam_session_params)
-    if @jam_session.valid?
-      render json: { jam_session: @jam_session } ,status: 201
-    else
+    if @jam_session.errors.any?
       errors = @jam_session.errors.messages
       render json: { errors: errors }, status: 400
+    else
+      render json: { jam_session: @jam_session } ,status: 201
     end
   end
 

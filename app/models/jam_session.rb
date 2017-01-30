@@ -7,6 +7,8 @@ class JamSession < ApplicationRecord
 
   scope :upcoming, -> { where('start_time >= now()') }
 
+  validates :band_id, :band_member_id, :candidate_id, :start_time, :end_time, presence: true
+
   def set_duration
     # include start_time, exclude end_time
     self.duration = (start_time...end_time)
